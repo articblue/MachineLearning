@@ -29,6 +29,7 @@ model_ext=".h5"
 input_shapex = 32
 input_shapey = 32
 
+
 def get_im_cv2(path):
 
     #print('Path is :%s '% path)
@@ -138,27 +139,27 @@ def merge_several_folds_mean(data, nfolds):
 def create_model():
     model = Sequential()
     model.add(ZeroPadding2D((1, 1), input_shape=(3, input_shapex,input_shapey), dim_ordering='th'))
-    model.add(Convolution2D(4, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(32, 3, 3, activation='relu', dim_ordering='th'))
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(4, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(32, 3, 3, activation='relu', dim_ordering='th'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), dim_ordering='th'))
 
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(8, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(64, 3, 3, activation='relu', dim_ordering='th'))
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(8, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(64, 3, 3, activation='relu', dim_ordering='th'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), dim_ordering='th'))
     # Adding Extra layers
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(8, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(128, 3, 3, activation='relu', dim_ordering='th'))
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(8, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(128, 3, 3, activation='relu', dim_ordering='th'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), dim_ordering='th'))
 
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(8, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(128, 3, 3, activation='relu', dim_ordering='th'))
     model.add(ZeroPadding2D((1, 1), dim_ordering='th'))
-    model.add(Convolution2D(8, 3, 3, activation='relu', dim_ordering='th'))
+    model.add(Convolution2D(128, 3, 3, activation='relu', dim_ordering='th'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), dim_ordering='th'))
     # End Adding extra layers
     model.add(Flatten())
